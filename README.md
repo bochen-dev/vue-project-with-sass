@@ -2,6 +2,59 @@
 
 > A Vue.js project with sass/scss.
 
+## Sass Loader Setup
+1. Install `sass-loader` and `node-sass`.
+``` bash
+npm i sass-loader node-sass --save-dev
+```
+
+2. Open `build/webpack.base.conf.js`
+``` js
+module.exports = {
+    ...
+    module: {
+        rules: [
+            ...,
+            // add the object below into rules
+            {
+                test: /\.s[a|c]ss$/,
+                use: [
+                    'style-loader', 
+                    'css-loader', 
+                    'sass-loader'
+                ]
+            }
+        ]
+    },
+    ...
+}
+```
+3. Done.
+
+4. Try it, Open `src/components/HelloWorld.vue`.
+
+5. Add `lang="sass"` or `lang="scss"` in `<style>`.
+### Sass
+
+``` html
+<style lang="sass" scoped>
+ul
+    li
+        display: inline-block;
+</style>
+```
+### Scss
+
+``` html
+<style lang="scss" scoped>
+ul {
+    li {
+        display: inline-block;
+    }
+}
+</style>
+```
+
 ## Build Setup
 
 ``` bash
@@ -10,12 +63,7 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## More
+[sass-loader](https://github.com/webpack-contrib/sass-loader)
